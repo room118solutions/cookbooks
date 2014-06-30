@@ -18,6 +18,7 @@
 #
 
 package 'opendkim'
+package 'opendkim-tools'
 
 template "/etc/opendkim.conf" do
   source "opendkim.conf.erb"
@@ -42,6 +43,12 @@ bash "generate and install key" do
       mv "#{node[:postfix_dkim][:selector]}.private" #{File.basename node[:postfix_dkim][:keyfile]}
     fi
   EOH
+end
+
+group "opendkim" do
+  action :modify
+  members "postfix"
+  append true
 end
 
 service "opendkim" do
