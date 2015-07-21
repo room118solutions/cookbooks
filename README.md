@@ -1,0 +1,1 @@
+The `postfix-dkim` cookbook has been moved to https://github.com/room118solutions/chef-postfix-dkim
